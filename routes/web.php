@@ -16,3 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get( 'projects/',function (){
+    return "hola mundo";
+});
+Route::get('projects/({project}',function (){
+    return ['proyecto1','proyecto2'];
+});
+Route::put( 'projects/{project}',function (){
+    return "dato actualizado";
+});
+Route::delete( 'projects/{project}',function (){
+    return "dato eliminado";
+});
+Route::post( 'projects/',function (){
+    return "nuevo dato";
+});
