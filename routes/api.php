@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
   //  return $request->user();
 //});
 
-<<<<<<< HEAD
+
 Route::get('projects',function(){
     return ['proyecto1','proyecto2'];
  });
@@ -43,6 +43,4 @@ Route::get('projects',function(){
  Route::delete('projects',function(){
     return ['eliminado'];
  });
-=======
 
->>>>>>> a907e48475c3495bbe0cc9974fcf7774b70f10bd
