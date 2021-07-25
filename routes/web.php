@@ -12,21 +12,40 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get( 'projects/',function (){
+Route::get('projects/', function () {
     return "hola mundo";
 });
-Route::get('projects/({project}',function (){
-    return ['proyecto1','proyecto2'];
+Route::get('projects/({project}', function () {
+    return ['proyecto1', 'proyecto2'];
 });
-Route::put( 'projects/{project}',function (){
+Route::put('projects/{project}', function () {
     return "dato actualizado";
 });
-Route::delete( 'projects/{project}',function (){
+Route::delete('projects/{project}', function () {
     return "dato eliminado";
 });
-Route::post( 'projects/',function (){
+Route::post('projects/', function () {
     return "nuevo dato";
+});
+
+//nuevas rutas
+
+Route::get('computers/', function () {
+    return ['hp', 'ryzen', 'intel'];
+});
+Route::get('computers/{computer}/empresas/{empresa}', function () {
+    return ['hp', 'ryzen', 'intel'];
+});
+Route::put('computers/{computer}/empresas/{empresa}', function () {
+    return ['dato actualizado'];
+});
+Route::delete('computers/{computer}/empresas/{empresa}', function () {
+    return ['dato eliminado'];
+});
+Route::post('computers/{computer}/empresas/{empresa}', function () {
+    return ['dato creado'];
 });
