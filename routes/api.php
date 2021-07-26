@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
   //  return $request->user();
 //});
 
-
+/*
 Route::get('projects',function(){
     return ['proyecto1','proyecto2'];
  });
@@ -44,7 +44,7 @@ Route::get('projects',function(){
     return ['eliminado'];
  });
 
-//nuevas rutas deber 
+//nuevas rutas deber
 
 Route::get('shoes/{shoe}/trademarks',function(){
    return ['nike','supra'];
@@ -67,4 +67,4 @@ Route::put('shoes/{shoe}/trademarks/{brand}',function(){
 
 Route::delete('shoes/{shoe}/trademarks/{brand}',function(){
    return ['eliminado'];
-});
+});*/

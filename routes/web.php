@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectsControllerA;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -34,18 +35,84 @@ Route::post('projects/', function () {
 
 //nuevas rutas
 
-Route::get('computers/{computer}/business', function () {
-    return ['hp', 'ryzen', 'intel'];
+Route::get('computers', function () {
+    $computers = ['ryzen','intel','hp'];
+    return response()->json(
+        [
+            'data' => $computers,
+            'msg' => [
+                'summary' => 'consulta correcta',
+                'detail' => 'la consulta de las computadoras esta correcta',
+                'code' => '201'
+            ]
+
+        ],201
+    );
 });
 Route::get('computers/{computer}/business/{local}', function () {
-    return ['hp', 'ryzen', 'intel'];
+    $computers = ['ryzen','intel','hp'];
+    return response()->json(
+        [
+            'data' => $computers,
+            'msg' => [
+                'summary' => 'consulta correcta',
+                'detail' => 'la consulta de la computadora y la empresa es correcta',
+                'code' => '200'
+            ]
+
+        ],200
+    );
 });
 Route::put('computers/{computer}/business/{local}', function () {
-    return ['dato actualizado'];
+    $computers = ['ryzen','intel','hp'];
+    return response()->json(
+        [
+            'data' => null,
+            'msg' => [
+                'summary' => 'actualizacion correcta',
+                'detail' => 'los datos se han actualizado',
+                'code' => '201'
+            ]
+
+        ],201
+    );
 });
 Route::delete('computers/{computer}/business/{local}', function () {
-    return ['dato eliminado'];
+    $computers = ['ryzen','intel','hp'];
+    return response()->json(
+        [
+            'data' => $computers,
+            'msg' => [
+                'summary' => 'eliminacion correcta',
+                'detail' => 'dato eliminado',
+                'code' => '201'
+            ]
+
+        ],201
+    );
 });
 Route::post('computers/{computer}/business', function () {
-    return ['dato creado'];
+    $computers = ['ryzen','intel','hp'];
+    return response()->json(
+        [
+            'data' => null,
+            'msg' => [
+                'summary' => 'creacion correcta',
+                'detail' => 'el dato ha sido creado',
+                'code' => '201'
+            ]
+
+        ],201
+    );
+});*/
+
+Route::apiResource('projects',ProjectsControllerA::class);
+//en singular para agregar funcionalidades extras a un crud normal
+Route::prefix('project')->group(function (){
+    Route::prefix('{project}')->group(function (){
+        Route::patch('state',[ProjectsControllerA::class,'updateState']);
+    });
+    Route::prefix('')->group(function (){
+        Route::patch('state',[ProjectsControllerA::class,'updateState']);
+    });
 });
