@@ -46,25 +46,25 @@ Route::get('projects',function(){
 
 //nuevas rutas deber 
 
-Route::get('zapatos/{zapato}/marcas',function(){
+Route::get('shoes/{shoe}/trademarks',function(){
    return ['nike','supra'];
 });
 
-Route::get('zapatos/{zapato}/marcas/{marca}',function(){
+Route::get('shoes/{shoe}/trademarks/{brand}',function(){
    return ['nike','supra'];
 });
 
 
-Route::post('zapatos/{zapato}/marcas',function(){
+Route::post('shoes/{shoe}/trademarks',function(){
    return ['creado'];
 });
 
 
-Route::put('zapatos/{zapato}/marcas/{marca}',function(){
+Route::put('shoes/{shoe}/trademarks/{brand}',function(){
    return ['actualizado'];
 });
 
 
-Route::delete('zapatos/{zapato}/marcas/{marca}',function(){
+Route::delete('shoes/{shoe}/trademarks/{brand}',function(){
    return ['eliminado'];
 });
