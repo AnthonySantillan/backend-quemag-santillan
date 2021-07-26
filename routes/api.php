@@ -44,3 +44,27 @@ Route::get('projects',function(){
     return ['eliminado'];
  });
 
+//nuevas rutas deber 
+
+Route::get('zapatos/{zapato}/marcas',function(){
+   return ['nike','supra'];
+});
+
+Route::get('zapatos/{zapato}/marcas/{marca}',function(){
+   return ['nike','supra'];
+});
+
+
+Route::post('zapatos/{zapato}/marcas',function(){
+   return ['creado'];
+});
+
+
+Route::put('zapatos/{zapato}/marcas/{marca}',function(){
+   return ['actualizado'];
+});
+
+
+Route::delete('zapatos/{zapato}/marcas/{marca}',function(){
+   return ['eliminado'];
+});
