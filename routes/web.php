@@ -34,18 +34,18 @@ Route::post('projects/', function () {
 
 //nuevas rutas
 
-Route::get('computers/', function () {
+Route::get('computers/{computer}/business', function () {
     return ['hp', 'ryzen', 'intel'];
 });
-Route::get('computers/{computer}/empresas/{empresa}', function () {
+Route::get('computers/{computer}/business/{local}', function () {
     return ['hp', 'ryzen', 'intel'];
 });
-Route::put('computers/{computer}/empresas/{empresa}', function () {
+Route::put('computers/{computer}/business/{local}', function () {
     return ['dato actualizado'];
 });
-Route::delete('computers/{computer}/empresas/{empresa}', function () {
+Route::delete('computers/{computer}/business/{local}', function () {
     return ['dato eliminado'];
 });
-Route::post('computers/{computer}/empresas/{empresa}', function () {
+Route::post('computers/{computer}/business', function () {
     return ['dato creado'];
 });
