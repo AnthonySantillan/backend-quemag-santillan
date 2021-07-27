@@ -45,7 +45,7 @@ Route::get('projects',function(){
     return ['eliminado'];
  });
 
-//nuevas rutas deber 
+//nuevas rutas deber
 
 Route::get('shoes/{shoe}/trademarks',function(){
    return response()->json(
@@ -103,6 +103,7 @@ Route::put('shoes/{shoe}/trademarks/{brand}',function(){
 
 
 Route::delete('shoes/{shoe}/trademarks/{brand}',function(){
+<<<<<<< HEAD
    return response()->json(
       [
           'data' => $project,
@@ -119,3 +120,7 @@ Route::delete('shoes/{shoe}/trademarks/{brand}',function(){
 
 
 Route::apiResource('projects',ProjectsControllerQ::class);
+=======
+   return ['eliminado'];
+});*/
+>>>>>>> 86e289734001d4e53f7420735b97857b454ef2e2
