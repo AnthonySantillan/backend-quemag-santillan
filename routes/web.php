@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsControllerA;
+use App\Http\Controllers\ComputersControllerS;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -114,5 +116,19 @@ Route::prefix('project')->group(function (){
     });
     Route::prefix('')->group(function (){
         Route::patch('state',[ProjectsControllerA::class,'updateState']);
+    });
+});
+
+// nuevas rutas
+
+Route::apiResource('computers.business',ComputersControllerS::class);
+//en singular para agregar funcionalidades extras a un crud normal
+Route::prefix('computer')->group(function (){
+    Route::prefix('{computer}/business')->group(function (){
+        Route::get('{local}',[ComputersControllerS::class,'index']);
+        Route::patch('state',[ComputersControllerS::class,'updateState']);
+    });
+    Route::prefix('')->group(function (){
+        Route::get('state',[ComputersControllerS::class,'updateState']);
     });
 });
