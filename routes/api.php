@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectsControllerQ;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
   //  return $request->user();
 //});
 
-
+/*
 Route::get('projects',function(){
     return ['proyecto1','proyecto2'];
  });
@@ -47,24 +48,74 @@ Route::get('projects',function(){
 //nuevas rutas deber 
 
 Route::get('shoes/{shoe}/trademarks',function(){
-   return ['nike','supra'];
+   return response()->json(
+      [
+          'data' => $project,
+          'msg' => [
+              'summary' => 'consulta correcta',
+              'detail' => 'la consulta del proyecto se ejecutó correctamente',
+              'code' => '200'
+          ]
+      ], 200
+  );
 });
 
 Route::get('shoes/{shoe}/trademarks/{brand}',function(){
-   return ['nike','supra'];
+   return response()->json(
+      [
+          'data' => $project,
+          'msg' => [
+              'summary' => 'consulta correcta',
+              'detail' => 'la consulta del proyecto se ejecutó correctamente',
+              'code' => '200'
+          ]
+      ], 200
+  );
 });
 
 
 Route::post('shoes/{shoe}/trademarks',function(){
-   return ['creado'];
+   return response()->json(
+      [
+          'data' => $project,
+          'msg' => [
+              'summary' => 'Creado correctamente',
+              'detail' => 'El proyecto se creo correctamente',
+              'code' => '201'
+          ]
+      ], 201
+  );
 });
 
 
 Route::put('shoes/{shoe}/trademarks/{brand}',function(){
-   return ['actualizado'];
+   return response()->json(
+      [
+          'data' => null,
+          'msg' => [
+              'summary' => 'Actualizado correctamente',
+              'detail' => 'EL proyecto se actualizó correctamente',
+              'code' => '201'
+          ]
+      ], 201
+  );
 });
 
 
 Route::delete('shoes/{shoe}/trademarks/{brand}',function(){
-   return ['eliminado'];
+   return response()->json(
+      [
+          'data' => $project,
+          'msg' => [
+              'summary' => 'Eliminado correctamente',
+              'detail' => 'EL proyecto se eliminó correctamente',
+              'code' => '201'
+          ]
+      ], 201
+  );
 });
+
+*/
+
+
+Route::apiResource('projects',ProjectsControllerQ::class);
