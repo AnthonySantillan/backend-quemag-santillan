@@ -119,6 +119,7 @@ Route::prefix('project')->group(function (){
     });
 });
 
+<<<<<<< HEAD
 // nuevas rutas
 
 Route::apiResource('computers.business',ComputersControllerS::class);
@@ -132,3 +133,6 @@ Route::prefix('computer')->group(function (){
         Route::get('state',[ComputersControllerS::class,'updateState']);
     });
 });
+=======
+
+>>>>>>> 1ab0de64ffba2ee8c3a2c029838ca55b1a0769aa
