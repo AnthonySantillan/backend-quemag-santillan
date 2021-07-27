@@ -6,20 +6,20 @@ use Illuminate\Http\Request;
 
 class ProjectsControllerQ extends Controller
 {
-    /
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $computers = ['ryzen','intel','hp'];
+        $shoes = ['nike','adidas'];
         return response()->json(
             [
-                'data' => $computers,
+                'data' => $shoes,
                 'msg' => [
                     'summary' => 'consulta correcta',
-                    'detail' => 'la consulta de las computadoras esta correcta',
+                    'detail' => 'la consulta de los zapatos es correcta',
                     'code' => '201'
                 ]
 
@@ -27,7 +27,7 @@ class ProjectsControllerQ extends Controller
         );
     }
 
-    /
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,13 +35,13 @@ class ProjectsControllerQ extends Controller
      */
     public function store(Request $request)
     {
-        $computers = ['ryzen','intel','hp'];
+        $shoes = ['nike','adidas'];
         return response()->json(
             [
-                'data' => $computers,
+                'data' => $shoes,
                 'msg' => [
                     'summary' => 'consulta correcta',
-                    'detail' => 'la consulta de la computadora y la empresa es correcta',
+                    'detail' => 'la consulta de los zapatos y marca es correcta',
                     'code' => '200'
                 ]
 
@@ -49,7 +49,7 @@ class ProjectsControllerQ extends Controller
         );
     }
 
-    /
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -57,10 +57,10 @@ class ProjectsControllerQ extends Controller
      */
     public function show($id)
     {
-        $computer = ['ryzen','intel','hp'];
+        $shoes = ['nike','adidas'];
         return response()->json(
             [
-                'data' => $computer,
+                'data' => $shoes,
                 'msg' => [
                     'summary' => 'creacion correcta',
                     'detail' => 'el dato ha sido creado',
@@ -71,7 +71,7 @@ class ProjectsControllerQ extends Controller
         );
     }
 
-    /
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -101,13 +101,28 @@ class ProjectsControllerQ extends Controller
      */
     public function destroy($id)
     {
-        $computer = 'computer';
+        $shoes = 'nike','adidas';
         return response()->json(
             [
-                'data' => $computer,
+                'data' => $shoes,
                 'msg' => [
                     'summary' => 'eliminacion correcta',
                     'detail' => 'dato eliminado',
+                    'code' => '201'
+                ]
+
+            ],201
+        );
+    }
+    public function updateState()
+    {
+        $shoes = 'nike','adidas';
+        return response()->json(
+            [
+                'data' => $shoes,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'el estado se actualizo ',
                     'code' => '201'
                 ]
 

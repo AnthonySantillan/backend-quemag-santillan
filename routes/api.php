@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsControllerQ;
+use App\Http\Controllers\shoesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,80 +48,110 @@ Route::get('projects',function(){
 
 //nuevas rutas deber
 
-Route::get('shoes/{shoe}/trademarks',function(){
-   return response()->json(
-      [
-          'data' => $project,
-          'msg' => [
-              'summary' => 'consulta correcta',
-              'detail' => 'la consulta del proyecto se ejecutó correctamente',
-              'code' => '200'
-          ]
-      ], 200
-  );
+Route::get('shoes', function () {
+    $shoes = ['nike','adidas'];
+    return response()->json(
+        [
+            'data' => $shoes,
+            'msg' => [
+                'summary' => 'consulta correcta',
+                'detail' => 'la consulta de zapatos es correcta',
+                'code' => '201'
+            ]
+
+        ],201
+    );
 });
+Route::get('shoes/{shoe}/trademarks/{brand}', function () {
+    $shoes = ['nike','adidas'];
+    return response()->json(
+        [
+            'data' => $shoes,
+            'msg' => [
+                'summary' => 'consulta correcta',
+                'detail' => 'la consulta de los zapatos y marca es correcta',
+                'code' => '200'
+            ]
 
-Route::get('shoes/{shoe}/trademarks/{brand}',function(){
-   return response()->json(
-      [
-          'data' => $project,
-          'msg' => [
-              'summary' => 'consulta correcta',
-              'detail' => 'la consulta del proyecto se ejecutó correctamente',
-              'code' => '200'
-          ]
-      ], 200
-  );
+        ],200
+    );
 });
+Route::put('shoes/{shoe}/trademarks/{brand}', function () {
+    $shoes = ['nike','adidas'];
+    return response()->json(
+        [
+            'data' => null,
+            'msg' => [
+                'summary' => 'actualizacion correcta',
+                'detail' => 'los datos se han actualizado',
+                'code' => '201'
+            ]
 
-
-Route::post('shoes/{shoe}/trademarks',function(){
-   return response()->json(
-      [
-          'data' => $project,
-          'msg' => [
-              'summary' => 'Creado correctamente',
-              'detail' => 'El proyecto se creo correctamente',
-              'code' => '201'
-          ]
-      ], 201
-  );
+        ],201
+    );
 });
+Route::delete('shoes/{shoe}/trademarks/{brand}', function () {
+    $shoes = ['nike','adidas'];
+    return response()->json(
+        [
+            'data' => $shoes,
+            'msg' => [
+                'summary' => 'eliminacion correcta',
+                'detail' => 'dato eliminado',
+                'code' => '201'
+            ]
 
-
-Route::put('shoes/{shoe}/trademarks/{brand}',function(){
-   return response()->json(
-      [
-          'data' => null,
-          'msg' => [
-              'summary' => 'Actualizado correctamente',
-              'detail' => 'EL proyecto se actualizó correctamente',
-              'code' => '201'
-          ]
-      ], 201
-  );
+        ],201
+    );
 });
+Route::post('shoes/{shoe}/trademarks', function () {
+    $shoes = ['nike','adidas'];
+    return response()->json(
+        [
+            'data' => null,
+            'msg' => [
+                'summary' => 'creacion correcta',
+                'detail' => 'el dato ha sido creado',
+                'code' => '201'
+            ]
 
-
-Route::delete('shoes/{shoe}/trademarks/{brand}',function(){
-<<<<<<< HEAD
-   return response()->json(
-      [
-          'data' => $project,
-          'msg' => [
-              'summary' => 'Eliminado correctamente',
-              'detail' => 'EL proyecto se eliminó correctamente',
-              'code' => '201'
-          ]
-      ], 201
-  );
+        ],201
+    );
 });
 
 */
 
 
 Route::apiResource('projects',ProjectsControllerQ::class);
-=======
-   return ['eliminado'];
-});*/
->>>>>>> 86e289734001d4e53f7420735b97857b454ef2e2
+//en singular para agregar funcionalidades extras a un crud normal
+
+Route::prefix('project')->group(function (){
+    Route::prefix('{project}')->group(function (){
+        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+    });
+    Route::prefix('')->group(function (){
+        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+    });
+});
+
+//deber
+
+Route::apiResource('shoes.trademarks',shoesController::class);
+
+Route::prefix('shoes/{shoe}/trademarks/{brand}')->group(function () {
+    Route::patch('state',[shoesController::class,'updateState']);
+ });
+
+ //clase
+
+ Route::apiResource('projects.authors',ProjectsControllerQ::class);
+//en singular para agregar funcionalidades extras a un crud normal
+
+Route::prefix('project/{project}/authors/')->group(function (){
+    Route::prefix('{author}')->group(function (){
+        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+    });
+    Route::prefix('')->group(function (){
+        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+    });
+});
