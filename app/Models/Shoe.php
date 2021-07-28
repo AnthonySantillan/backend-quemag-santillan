@@ -14,8 +14,8 @@ class Shoe extends Model
         'names',
         'email',
         'phone',
-        'identificacion',
-        'is_approved',
+        'identification',
+        'approved',
         'date',
     ];
 

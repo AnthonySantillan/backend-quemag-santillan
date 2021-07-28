@@ -14,7 +14,7 @@ class Trademark extends Model
         'names',
         'email',
         'phone',
-        'identificacion',
+        'identification',
     ];
 
     //uno a uno
@@ -25,7 +25,7 @@ class Trademark extends Model
 
 */
 
-    //uno a varios   
+    //uno a varios
 
     function shoes(){
         return $this->hasMany(Shoe::class);

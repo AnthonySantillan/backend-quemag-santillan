@@ -101,7 +101,7 @@ class ProjectsControllerQ extends Controller
      */
     public function destroy($id)
     {
-        $shoes = 'nike','adidas';
+        $shoes = '';
         return response()->json(
             [
                 'data' => $shoes,
@@ -116,7 +116,7 @@ class ProjectsControllerQ extends Controller
     }
     public function updateState()
     {
-        $shoes = 'nike','adidas';
+        $shoes = '';
         return response()->json(
             [
                 'data' => $shoes,
