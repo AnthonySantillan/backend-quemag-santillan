@@ -38,7 +38,7 @@ class Shoe extends Model
     //uno a varios
 
        public function trademarks(){
-          return $this->belongsTo(Trademark::Class)
+          return $this->belongsTo(Trademark::Class);
 }
 
 
@@ -57,7 +57,7 @@ function setCodeAttribute($value){
 }
 
 
-function setCodeAttribute($value){
+function setCodeAttributes($value){
 
     $this->attributes['date'] = 'hola';
 }
@@ -66,7 +66,7 @@ function setCodeAttribute($value){
 //Accessors
  function getFullNameAttribute(){
 
-    return $this->attributes['code'].$this->attributes['description']);
+    return $this->attributes['code'].$this->attributes['description'];
 }
 
 

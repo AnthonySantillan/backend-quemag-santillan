@@ -9,13 +9,20 @@ class Business extends Model
 {
     //use HasFactory;
     protected $table = 'business';
-    protected $attributes = [
+    protected $fillable = [
         'name',
         'location',
         'phone',
         'deal',
         'email',
     ];
+    protected $casts = [
+        'is_approved' => 'boolean',
+        'date' => 'datetime:Y-m-d',
+    ];
+
+
+    protected $attributes = ['full_name'];
     /*function computer(){
         return $this->hasOne(Computer::class);
     }
