@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Shoe extends Model
 {
-    //use HasFactory;
-    protected $table = 'shoes';
+    use HasFactory;
+    protected $table = 'app.shoes';
     //nombre de la clase en plural
     protected $fillable =[
         'names',

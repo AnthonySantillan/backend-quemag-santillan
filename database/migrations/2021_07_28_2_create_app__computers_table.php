@@ -19,7 +19,7 @@ class CreateAppComputersTable extends Migration
             $table->foreignId('busines_id')->constrained('app.business');
             $table->text('brand');
             $table->text('color');
-            $table->text('code');
+            $table->integer('code');
             $table->integer('wight');
             $table->text('model');
             $table->softDeletes();

@@ -18,7 +18,7 @@ class CreateAppShoesTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('email');
-            $table->integer('phone');
+            $table->string('phone');
             $table->text('identification');
             $table->boolean('approved');
             $table->date('date');

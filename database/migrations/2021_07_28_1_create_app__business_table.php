@@ -18,7 +18,7 @@ class CreateAppBusinessTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            $table->integer('phone');
+            $table->string('phone');
             $table->text('deal');
             $table->text('email');
             $table->softDeletes();

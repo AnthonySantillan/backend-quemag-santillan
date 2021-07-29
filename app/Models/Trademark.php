@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-//use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Trademark extends Model
 {
-    //use HasFactory;
-    protected $table = 'trademarks';
+    use HasFactory;
+    protected $table = 'app.trademarks';
     //nombre de la clase en plural
     protected $fillable =[
         'names',
