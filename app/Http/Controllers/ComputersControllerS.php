@@ -72,7 +72,7 @@ class ComputersControllerS extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($computers)
     {
         $computers = Computer::find($computers);
         return response()->json(
@@ -95,9 +95,9 @@ class ComputersControllerS extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $computers)
     {
-        $computers = new Computer();
+        $computers = Computer::find($computers);
         $computers->brand = $request->brand;
         $computers->color = $request->color;
         $computers->code = $request->code;
