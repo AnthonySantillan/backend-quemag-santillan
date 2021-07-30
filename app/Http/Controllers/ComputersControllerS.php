@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComputersControllerS extends Controller
 {
@@ -13,17 +15,24 @@ class ComputersControllerS extends Controller
      */
     public function index()
     {
-        $computers = ['ryzen','samsung','intel','redmi','huawei','hp'];
+        // SQL
+        // $computers = DB::select('select * from app.computer');
+
+        // QUERY BUILDER
+        // $computers = DB::table('app.computer')->get();
+
+        // ELOQUENT
+        $computers = Computer::get();
         return response()->json(
             [
                 'data' => $computers,
                 'msg' => [
                     'summary' => 'consulta correcta',
-                    'detail' => 'la consulta de las computadoras esta correcta',
-                    'code' => '201'
+                    'detail' => 'la consulta de la computadora y la empresa es correcta',
+                    'code' => '200'
                 ]
 
-            ],201
+            ],200
         );
     }
 
@@ -35,7 +44,15 @@ class ComputersControllerS extends Controller
      */
     public function store(Request $request)
     {
-        $computers = ['ryzen','samsung','intel','redmi','huawei','hp'];
+        $computers = new Computer();
+        $computers->brand = $request->brand;
+        $computers->color = $request->color;
+        $computers->code = $request->code;
+        $computers->weight = $request->weight;
+        $computers->model = $request->model;
+        $computers->save();
+
+
         return response()->json(
             [
                 'data' => $computers,
@@ -57,17 +74,17 @@ class ComputersControllerS extends Controller
      */
     public function show($id)
     {
-        $computers = ['ryzen','samsung','intel','redmi','huawei','hp'];
+        $computers = Computer::find($computers);
         return response()->json(
             [
-                'data' => $computer,
+                'data' => $computers,
                 'msg' => [
-                    'summary' => 'creacion correcta',
-                    'detail' => 'el dato ha sido creado',
-                    'code' => '201'
+                    'summary' => 'consulta correcta',
+                    'detail' => 'la consulta de la computadora y la empresa es correcta',
+                    'code' => '200'
                 ]
 
-            ],201
+            ],200
         );
     }
 
@@ -80,6 +97,14 @@ class ComputersControllerS extends Controller
      */
     public function update(Request $request, $id)
     {
+        $computers = new Computer();
+        $computers->brand = $request->brand;
+        $computers->color = $request->color;
+        $computers->code = $request->code;
+        $computers->weight = $request->weight;
+        $computers->model = $request->model;
+        $computers->save();
+
         return response()->json(
             [
                 'data' => null,
@@ -101,7 +126,8 @@ class ComputersControllerS extends Controller
      */
     public function destroy($id)
     {
-        $computer = 'computer';
+        $computer = Computer::find($computer);
+        $computer->delete();
         return response()->json(
             [
                 'data' => $computer,

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectsControllerQ;
 use App\Http\Controllers\shoesController;
+use App\Http\Controllers\ComputersControllerS;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,36 +123,36 @@ Route::post('shoes/{shoe}/trademarks', function () {
 */
 
 
-Route::apiResource('projects',ProjectsControllerQ::class);
+Route::apiResource('projects',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal
 
 Route::prefix('project')->group(function (){
     Route::prefix('{project}')->group(function (){
-        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+        Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
     Route::prefix('')->group(function (){
-        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+        Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
 });
 
 //deber
 
-Route::apiResource('shoes.trademarks',shoesController::class);
+Route::apiResource('shoes.trademarks',ComputersControllerS::class);
 
 Route::prefix('shoes/{shoe}/trademarks/{brand}')->group(function () {
-    Route::patch('state',[shoesController::class,'updateState']);
+    Route::patch('state',[ComputersControllerS::class,'updateState']);
  });
 
  //clase
 
- Route::apiResource('projects.authors',ProjectsControllerQ::class);
+ Route::apiResource('projects.authors',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal
 
 Route::prefix('project/{project}/authors/')->group(function (){
     Route::prefix('{author}')->group(function (){
-        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+        Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
     Route::prefix('')->group(function (){
-        Route::patch('state',[ProjectsControllerQ::class,'updateState']);
+        Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
 });
