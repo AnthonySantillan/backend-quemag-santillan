@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectsControllerA extends Controller
 {
@@ -13,17 +14,24 @@ class ProjectsControllerA extends Controller
      */
     public function index()
     {
-        $computers = ['ryzen','intel','hp'];
+       // SQL
+        // $projects = DB::select('select * from app.projects');
+
+        // QUERY BUILDER
+        // $projects = DB::table('app.projects')->get();
+
+        // ELOQUENT
+        $projects = Project::get();
         return response()->json(
             [
                 'data' => $computers,
                 'msg' => [
                     'summary' => 'consulta correcta',
-                    'detail' => 'la consulta de las computadoras esta correcta',
-                    'code' => '201'
+                    'detail' => 'la consulta de la computadora y la empresa es correcta',
+                    'code' => '200'
                 ]
 
-            ],201
+            ],200
         );
     }
 
@@ -35,7 +43,28 @@ class ProjectsControllerA extends Controller
      */
     public function store(Request $request)
     {
-        $computers = ['ryzen','intel','hp'];
+        /*
+        //$computers = ['ryzen','intel','hp'];
+        $project = DB::insert('insert into app.projects (code,date,description,approved,title,created_at,updated_at)
+        values (?,?,?,?,?,?,?)', [
+        $request->code,
+        $request->date,
+        $request->description,
+        $request->approved,
+        $request->title,
+        $request->created_at,
+        $request->updated_at,
+    ]);
+*/
+    $project = new Project();
+        $project->code = $request->code;
+        $project->date = $request->date;
+        $project->description = $request->description;
+        $project->approved = $request->approved;
+        $project->title = $request->title;
+        $project->save();
+
+
         return response()->json(
             [
                 'data' => $computers,
@@ -57,17 +86,24 @@ class ProjectsControllerA extends Controller
      */
     public function show($id)
     {
-        $computer = ['ryzen','intel','hp'];
+        // SQL
+        // $projects = DB::select('select * from app.projects where id = ?', [$project]);
+
+        // QUERY BUILDER
+        // $project = DB::table('app.projects')->find($project);
+
+        // ELOQUENT
+        $project = Project::find($project);
         return response()->json(
             [
-                'data' => $computer,
+                'data' => $computers,
                 'msg' => [
-                    'summary' => 'creacion correcta',
-                    'detail' => 'el dato ha sido creado',
-                    'code' => '201'
+                    'summary' => 'consulta correcta',
+                    'detail' => 'la consulta de la computadora y la empresa es correcta',
+                    'code' => '200'
                 ]
 
-            ],201
+            ],200
         );
     }
 
@@ -80,6 +116,15 @@ class ProjectsControllerA extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $project = new Project();
+        $project->code = $request->code;
+        $project->date = $request->date;
+        $project->description = $request->description;
+        $project->approved = $request->approved;
+        $project->title = $request->title;
+        $project->save();
+        
         return response()->json(
             [
                 'data' => null,
