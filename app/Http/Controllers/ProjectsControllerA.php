@@ -124,7 +124,7 @@ class ProjectsControllerA extends Controller
         $project->approved = $request->approved;
         $project->title = $request->title;
         $project->save();
-        
+
         return response()->json(
             [
                 'data' => null,
@@ -146,7 +146,8 @@ class ProjectsControllerA extends Controller
      */
     public function destroy($id)
     {
-        $computer = 'computer';
+         $project = Project::find($project);
+        $project->delete();
         return response()->json(
             [
                 'data' => $computer,
