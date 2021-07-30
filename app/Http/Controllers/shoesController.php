@@ -9,9 +9,9 @@ class shoesController extends Controller
     
     public function index()
     {
-            $shoes = ['nike','adidas'];
+        $shoe = Shoe::get();
         return response()->json(
-           ['data'=> $shoes,
+           ['data'=> $shoe,
            'msg'=>['sumary'=> 'consulta sucessfull',
            'detail'=>'la consulta es exitosa 200', 
            'code'=>'201']], 201);
@@ -21,6 +21,12 @@ class shoesController extends Controller
     }
     public function store(Request $request)
     {
+        $shoe = new Shoe();
+        $shoe->names = $request->names;
+        $shoe->email = $request->email;
+        $shoe->description= $request->description;
+        $shoe->save();
+
         
         return response()->json(
            ['data'=> null,
@@ -30,19 +36,26 @@ class shoesController extends Controller
         
     }
 
-    public function show($id)
+    public function show($shoe)
     {
-        $shoes = 'nike';
+        $shoe = Shoe::find($shoe);
+
         return response()->json(
-           ['data'=> $shoes,
+
+           ['data'=> $shoe,
            'msg'=>['sumary'=> 'request succesfull',
            'detail'=>'la consulta es exitosa', 
            'code'=>'201']], 201);
        
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $shoe)
     {
+        $shoe = Shoe::find($shoe);
+        $shoe->names = $request->names;
+        $shoe->email = $request->email;
+        $shoe->description= $request->description;
+        $shoe->save();
         
         return response()->json(
             ['data'=> null,
@@ -52,9 +65,10 @@ class shoesController extends Controller
          
     }
 
-    public function destroy($id)
+    public function destroy($shoe)
     {
-        
+        $shoe = Shoe::find($shoe);
+        $shoe->delete();
         return response()->json(
             ['data'=> null,
             'msg'=>['sumary'=> 'elimnado item correcto',

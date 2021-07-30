@@ -13,8 +13,7 @@ class Shoe extends Model
     protected $fillable =[
         'names',
         'email',
-        'phone',
-        'identification',
+        'description',
         'approved',
         'date',
     ];
