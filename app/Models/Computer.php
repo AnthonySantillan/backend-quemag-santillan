@@ -9,7 +9,7 @@ class Computer extends Model
 {
     use HasFactory;
     protected $table = 'app.computers';
-    protected $attributes = [
+    protected $fillable = [
         'brand',
         'color',
         'code',

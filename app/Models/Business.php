@@ -9,7 +9,7 @@ class Business extends Model
 {
     use HasFactory;
     protected $table = 'app.business';
-    protected $attributes = [
+    protected $fillable = [
         'name',
         'location',
         'phone',

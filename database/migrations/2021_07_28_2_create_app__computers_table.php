@@ -16,11 +16,11 @@ class CreateAppComputersTable extends Migration
         Schema::connection(env('DB_CONNECTION_APP'))
             ->create('computers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('busines_id')->constrained('app.business');
+            $table->foreignId('business_id')->constrained('app.business');
             $table->text('brand');
             $table->text('color');
             $table->integer('code');
-            $table->integer('wight');
+            $table->integer('weight');
             $table->text('model');
             $table->softDeletes();
             $table->timestamps();

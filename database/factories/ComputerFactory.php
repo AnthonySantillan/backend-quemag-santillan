@@ -23,10 +23,10 @@ class ComputerFactory extends Factory
     {
         return [
             'brand' => $this->faker->randomElement(['computers','cellphones','tablets']),
-            'color' => $this->faker->randomElement(['computers','cellphones','tablets']),
+            'color' => $this->faker->randomElement(['red','white','green']),
             'code' => $this->faker->buildingNumber(),
             'weight' => $this->faker->buildingNumber(),
-            'model' => $this->faker->randomElement(['awsdq32412','4324adsw1','431232dasd']),
+            'model' => $this->faker->randomElement(['32412','43241','431232']),
         ];
     }
 }

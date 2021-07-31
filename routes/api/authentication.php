@@ -145,11 +145,12 @@ Route::prefix('shoes/{shoe}/trademarks/{brand}')->group(function () {
 
  //clase
 
- Route::apiResource('projects.authors',ComputersControllerS::class);
+ Route::apiResource('computers',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal
 
-Route::prefix('project/{project}/authors/')->group(function (){
-    Route::prefix('{author}')->group(function (){
+Route::prefix('computers/{computer}')->group(function (){
+    Route::prefix('business')->group(function (){
+        Route::get('{business}',[ComputersControllerS::class,'index']);
         Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
     Route::prefix('')->group(function (){
