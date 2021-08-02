@@ -11,11 +11,9 @@ class Shoe extends Model
     protected $table = 'app.shoes';
     //nombre de la clase en plural
     protected $fillable =[
-        'names',
-        'email',
+        'laces',
+        'box',
         'description',
-        'approved',
-        'date',
     ];
 
     protected $casts = [

@@ -22,8 +22,8 @@ class shoesController extends Controller
     public function store(Request $request)
     {
         $shoe = new Shoe();
-        $shoe->names = $request->names;
-        $shoe->email = $request->email;
+        $shoe->laces = $request->laces;
+        $shoe->box = $request->box;
         $shoe->description= $request->description;
         $shoe->save();
 
@@ -52,8 +52,8 @@ class shoesController extends Controller
     public function update(Request $request, $shoe)
     {
         $shoe = Shoe::find($shoe);
-        $shoe->names = $request->names;
-        $shoe->email = $request->email;
+        $shoe->laces = $request->laces;
+        $shoe->box = $request->box;
         $shoe->description= $request->description;
         $shoe->save();
         
@@ -76,7 +76,7 @@ class shoesController extends Controller
             'code'=>'201']], 201);
          
 }
-public function updateState($id)
+public function updateState($shoe)
 {
 return response()->json(
     ['data'=> null,
