@@ -63,7 +63,21 @@ return [
             ]) : [],
         ],
 
-        'pgsql' => [
+        'pgsql-authentication' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'forget'),
+            'username' => env('DB_USERNAME', 'forget'),
+            'password' => env('DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'schema' => env('DB_SCHEMA', 'public'),
+            'sslmode' => 'prefer',
+        ],
+        'pgsql-app' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
@@ -74,7 +88,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'schema' => 'public',
+            'schema' => env('DB_SCHEMA_APP', 'public'),
             'sslmode' => 'prefer',
         ],
 

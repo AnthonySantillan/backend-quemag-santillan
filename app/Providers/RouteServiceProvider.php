@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
+
 class RouteServiceProvider extends ServiceProvider
 {
     /**
@@ -38,11 +39,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
-
+            $this->mapApiRoutes();
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
@@ -59,5 +56,22 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
+    }
+    //versionamiento de rutas
+   //migracion es la abstraccion de mi base de datos , creacion de tablas y migrar al motor de base de datos
+    protected function mapApiRoutes()
+    {
+        $version = 'v1';
+        Route::prefix('api/'.$version.'/public')
+            ->middleware('api')
+            ->group(base_path('routes/api/public.php'));
+
+        Route::prefix('api/'.$version.'/private')
+            ->middleware('api')
+            ->group(base_path('routes/api/private.php'));
+
+        Route::prefix('api/'.$version.'/authentication')
+            ->middleware('api')
+            ->group(base_path('routes/api/authentication.php'));
     }
 }
