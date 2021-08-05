@@ -4,85 +4,129 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class shoesController extends Controller
+class ShoesController extends Controller
 {
-    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $shoe = Shoe::get();
+        $shoe = ['nike','adidas'];
         return response()->json(
-           ['data'=> $shoe,
-           'msg'=>['sumary'=> 'consulta sucessfull',
-           'detail'=>'la consulta es exitosa 200', 
-           'code'=>'201']], 201);
-            return ['nike','adidas'];
-        
+            [
+                'data' => $shoe,
+                'msg' => [
+                    'summary' => 'consulta correcta',
+                    'detail' => 'la consulta de los zapatos es correcta',
+                    'code' => '201'
+                ]
 
+            ],201
+        );
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        $shoe = new Shoe();
-        $shoe->laces = $request->laces;
-        $shoe->box = $request->box;
-        $shoe->description= $request->description;
-        $shoe->save();
-
-        
+        $shoe = ['nike','adidas'];
         return response()->json(
-           ['data'=> null,
-           'msg'=>['sumary'=> 'request succesfull',
-           'detail'=>'la consulta es exitosa', 
-           'code'=>'201']], 201);
-        
+            [
+                'data' => $shoe,
+                'msg' => [
+                    'summary' => 'consulta correcta',
+                    'detail' => 'la consulta de los zapatos y marca es correcta',
+                    'code' => '200'
+                ]
+
+            ],200
+        );
     }
 
-    public function show($shoe)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        $shoe = Shoe::find($shoe);
-
+        $shoe = ['nike','adidas'];
         return response()->json(
+            [
+                'data' => $shoe,
+                'msg' => [
+                    'summary' => 'creacion correcta',
+                    'detail' => 'el dato ha sido creado',
+                    'code' => '201'
+                ]
 
-           ['data'=> $shoe,
-           'msg'=>['sumary'=> 'request succesfull',
-           'detail'=>'la consulta es exitosa', 
-           'code'=>'201']], 201);
-       
+            ],201
+        );
     }
 
-    public function update(Request $request, $shoe)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
     {
-        $shoe = Shoe::find($shoe);
-        $shoe->laces = $request->laces;
-        $shoe->box = $request->box;
-        $shoe->description= $request->description;
-        $shoe->save();
-        
         return response()->json(
-            ['data'=> null,
-            'msg'=>['sumary'=> 'subida correcta',
-            'detail'=>'la subida es correcta', 
-            'code'=>'201']], 201);
-         
+            [
+                'data' => null,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'los datos se han actualizado',
+                    'code' => '201'
+                ]
+
+            ],201
+        );
     }
 
-    public function destroy($shoe)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $shoe = Shoe::find($shoe);
-        $shoe->delete();
+        $shoe = '';
         return response()->json(
-            ['data'=> null,
-            'msg'=>['sumary'=> 'elimnado item correcto',
-            'detail'=>'delete sucessfull', 
-            'code'=>'201']], 201);
-         
-}
-public function updateState($shoe)
-{
-return response()->json(
-    ['data'=> null,
-    'msg'=>['sumary'=> 'actualizacion correcta',
-    'detail'=>'la actualizacion es correcta', 
-    'code'=>'201']], 201);
+            [
+                'data' => $shoe,
+                'msg' => [
+                    'summary' => 'eliminacion correcta',
+                    'detail' => 'dato eliminado',
+                    'code' => '201'
+                ]
 
-  }
+            ],201
+        );
+    }
+    public function updateState()
+    {
+        $shoe = '';
+        return response()->json(
+            [
+                'data' => $shoe,
+                'msg' => [
+                    'summary' => 'actualizacion correcta',
+                    'detail' => 'el estado se actualizo ',
+                    'code' => '201'
+                ]
+
+            ],201
+        );
+    }
 }

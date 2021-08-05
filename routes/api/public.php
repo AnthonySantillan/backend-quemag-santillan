@@ -122,7 +122,7 @@ Route::post('shoes/{shoe}/trademarks', function () {
 
 */
 
-
+/*
 Route::apiResource('projects',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal
 
@@ -134,7 +134,10 @@ Route::prefix('project')->group(function (){
         Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
 });
+*/
 
+
+/*
 //deber
 
 Route::apiResource('shoes.trademarks',ComputersControllerS::class);
@@ -156,3 +159,4 @@ Route::prefix('project/{project}/authors/')->group(function (){
         Route::patch('state',[ComputersControllerS::class,'updateState']);
     });
 });
+*/

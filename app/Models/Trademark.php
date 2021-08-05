@@ -2,40 +2,36 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+//use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Trademark extends Model
 {
-    use HasFactory;
-    protected $table = 'app.trademarks';
+    //use HasFactory;
+    protected $table = 'authentication.trademarks';
     //nombre de la clase en plural
     protected $fillable =[
-        'names',
-        'email',
-        'phone',
-        'identification',
+        'name',
+        'identification_code',
+        'desing',
+        'logo',
+        'colors',
     ];
 
-    //uno a uno
-/*
+//uno a uno
+    /*function shoe(){
+        return $this->beLongsTo(Shoe::class);
+    }
+*/
+
+//uno a varios
     function shoe(){
-        return $this->hasOne(Shoe::class);
+        return $this->beLongsTo(Shoe::class);
     }
 
-*/
 
-    //uno a varios
-
-    function shoes(){
-        return $this->hasMany(Shoe::class);
-    }
-
-    //varios a varios
-/*
-      function authors(){
-        return $this->belongsToMany(Author::class)->withTimestamps();
+//varios a varios
+    /*function shoes(){
+    return $this->beLongsToMany(Shoe::class)->withTimestamps();
 }
 */
-
-}

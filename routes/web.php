@@ -108,6 +108,7 @@ Route::post('computers/{computer}/business', function () {
     );
 });*/
 
+/*
 Route::apiResource('projects',ProjectsControllerA::class);
 //en singular para agregar funcionalidades extras a un crud normal
 Route::prefix('project')->group(function (){
@@ -118,8 +119,10 @@ Route::prefix('project')->group(function (){
         Route::patch('state',[ProjectsControllerA::class,'updateState']);
     });
 });
+*/
 
-// nuevas rutas
+
+// nuevas rutas S
 
 Route::apiResource('computers.business',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal

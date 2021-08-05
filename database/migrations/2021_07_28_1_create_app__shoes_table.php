@@ -17,8 +17,7 @@ class CreateAppShoesTable extends Migration
             ->create('shoes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('email');
-            $table->string('phone');
+            $table->text('Plantilla.');
             $table->text('identification');
             $table->boolean('approved');
             $table->date('date');

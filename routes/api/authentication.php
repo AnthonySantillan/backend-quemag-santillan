@@ -2,8 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProjectsControllerQ;
-use App\Http\Controllers\shoesController;
+use App\Http\Controllers\TrademarksController;
+use App\Http\Controllers\ShoesController;
 use App\Http\Controllers\ComputersControllerS;
 
 /*
@@ -122,7 +122,7 @@ Route::post('shoes/{shoe}/trademarks', function () {
 
 */
 
-
+/*
 Route::apiResource('projects',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal
 
@@ -135,16 +135,10 @@ Route::prefix('project')->group(function (){
     });
 });
 
-//deber
+*/
 
-Route::apiResource('shoes.trademarks',ComputersControllerS::class);
-
-Route::prefix('shoes/{shoe}/trademarks/{brand}')->group(function () {
-    Route::patch('state',[ComputersControllerS::class,'updateState']);
- });
-
- //clase
-
+//clase
+/*
  Route::apiResource('computers',ComputersControllerS::class);
 //en singular para agregar funcionalidades extras a un crud normal
 
@@ -155,5 +149,30 @@ Route::prefix('computers/{computer}')->group(function (){
     });
     Route::prefix('')->group(function (){
         Route::patch('state',[ComputersControllerS::class,'updateState']);
+    });
+});
+*/
+
+//Definitivas
+
+Route::apiResource('shoes',ShoesController::class);
+
+Route::prefix('shoe')->group(function () {
+    Route::prefix('{shoe}')->group(function () {
+    Route::patch('state',[ShoesController::class,'updateState']);
+ });
+ Route::prefix('')->group(function () {
+    Route::patch('state',[ShoesController::class,'updateState']);
+    });
+});
+
+Route::apiResource('shoes.trademarks',TrademarksController::class);
+
+Route::prefix('shoe/{shoe}/trademarks')->group(function () {
+    Route::prefix('{trademark}')->group(function () {
+    Route::patch('state',[ShoesController::class,'updateState']);
+ });
+ Route::prefix('')->group(function () {
+    Route::patch('state',[ShoesController::class,'updateState']);
     });
 });

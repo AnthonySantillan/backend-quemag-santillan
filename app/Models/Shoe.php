@@ -2,18 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+//use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Shoe extends Model
 {
-    use HasFactory;
-    protected $table = 'app.shoes';
-    //nombre de la clase en plural
-    protected $fillable =[
-        'laces',
-        'box',
+    //use HasFactory
+    protected $table = 'app.shoes'
+
+    protected $fillable = [
+        'name',
+        'date',
+        'cord',
+        'template',
         'description',
+        'colour',
+        'is_approved',
     ];
 
     protected $casts = [
@@ -21,50 +25,36 @@ class Shoe extends Model
         'date' => 'datetime:Y-m-d',
     ];
 
-
-    protected $attributes = ['full_name'];
-
-
-    //uno a uno
-
- /*   public function trademark(){
-        return $this->belongsTo(Trademark::Class)
+//uno a uno
+    /*
+    public function trademark(){
+        return $this->hasOne(Trademark::class);
     }
 */
 
-    //uno a varios
+//uno a varios
+    public function trademarks(){
+        return $this->hasMany(Trademark::class);
+    }
 
-       public function trademarks(){
-          return $this->belongsTo(Trademark::Class);
-}
-
-
-    //varios a varios
-/*
-    function trademarks(){
+//varios a varios
+    /*function trademarks(){
         return $this->belongsToMany(Trademark::class)->withTimestamps();
-}
+    }
 */
 
-//mutators
 
-function setCodeAttribute($value){
+/*
+//Mutators
 
-    $this->attributes['code'] = strtoupper($value);
-}
-
-
-function setCodeAttributes($value){
-
-    $this->attributes['date'] = 'hola';
-}
-
+    function getNameAttribute($value){
+        $this->attributes['name']=strtoupper($value);
+    }
 
 //Accessors
- function getFullNameAttribute(){
+    function getNameAttribute(){
+        return strtolower($this->attributes['name']);
+    }
 
-    return $this->attributes['code'].$this->attributes['description'];
-}
-
-
+*/
 }
